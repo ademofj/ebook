@@ -1,0 +1,15 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+      server:
+        encrypt.enabled: false
+        git:
+          uri: https://github.com/ademofj/ebook-config-repo/
+          searchPaths: productservice,userservice,orderservice,zuulservice
+          username: ademofj
+          password: zaq12wsx
+
