@@ -13,9 +13,9 @@ import javax.servlet.Filter;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class Application {
+public class OrderServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(OrderServiceApplication.class, args);
     }
 }

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
+@Table(name = "book_order")
 public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -115,6 +115,7 @@ public class Order implements Serializable {
 	public void setUpdate_time(Date update_time) {
 		this.update_time = update_time;
 	}
+
 
 	
 

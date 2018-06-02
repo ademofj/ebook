@@ -43,9 +43,6 @@ public class Trade implements Serializable {
 	@Column(name = "gateway_pay_time", nullable = false)
 	Date gateway_pay_time;
 	
-	@Column(name = "trade_status", nullable = false)
-	Integer trade_status;
-
 	@Column(name = "gateway_pay_price", nullable = false)
 	Integer gateway_pay_price;
 
@@ -122,14 +119,7 @@ public class Trade implements Serializable {
 		this.gateway_pay_time = gateway_pay_time;
 	}
 
-	public Integer getTrade_status() {
-		return trade_status;
-	}
-
-	public void setTrade_status(Integer trade_status) {
-		this.trade_status = trade_status;
-	}
-
+	
 	public Integer getGateway_pay_price() {
 		return gateway_pay_price;
 	}
