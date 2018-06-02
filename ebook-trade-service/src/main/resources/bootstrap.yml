@@ -1,6 +1,6 @@
 spring:
   application:
-    name: orderservice
+    name: tradeservice
   profiles:
     active:
       default

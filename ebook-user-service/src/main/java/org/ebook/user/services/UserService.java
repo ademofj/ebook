@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.UUID;
+
 
 @Service
 public class UserService {
@@ -31,5 +31,8 @@ public class UserService {
     public void deleteUser(User user){
     	userRepository.delete(user);	  
     }
- 
+   
+    public Integer login(String user_name, String password) {
+    	return userRepository.login( user_name,password);
+    }
 }

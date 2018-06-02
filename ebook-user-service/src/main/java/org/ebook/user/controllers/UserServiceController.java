@@ -47,5 +47,10 @@ public class UserServiceController {
         userService.deleteUser( user );
     }
     
+    @RequestMapping(value="/{userName}/{password}",method = RequestMethod.GET)
+    public Integer login(@PathVariable("userName") String user_name,@PathVariable("password") String password) {
+    	Integer user_id = userService.login( user_name,password );
+        return user_id;
+    }
     
 }
