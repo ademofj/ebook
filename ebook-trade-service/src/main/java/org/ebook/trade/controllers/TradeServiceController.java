@@ -1,6 +1,7 @@
 package org.ebook.trade.controllers;
 
-
+import org.ebook.order.model.Order;
+import org.ebook.trade.clients.OrderFegnClient;
 import org.ebook.trade.model.Trade;
 import org.ebook.trade.services.TradeService;
 import org.slf4j.Logger;
@@ -16,36 +17,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
-@RequestMapping(value="v1/trade")
+@RequestMapping(value = "v1/trade")
 public class TradeServiceController {
-    @Autowired
-    private TradeService tradeService;
-    private static final Logger logger = LoggerFactory.getLogger(TradeServiceController.class);
+	@Autowired
+	private TradeService tradeService;
 
-    @RequestMapping(value="/{tradeId}",method = RequestMethod.GET)
-    public Trade getTrade( @PathVariable("tradeId") Integer tradeId) {
+	@Autowired
+	OrderFegnClient orderFegnClient;
 
-        Trade trade = tradeService.getTrade(tradeId);
-        
-        return trade;
-    }
+	private static final Logger logger = LoggerFactory.getLogger(TradeServiceController.class);
 
-    @RequestMapping(value="/{tradeId}",method = RequestMethod.PUT)
-    public void updateTrade( @PathVariable("tradeId") Integer tradeId, @RequestBody Trade trade) {
-        tradeService.updateTrade( trade );
+	@RequestMapping(value = "/{tradeId}", method = RequestMethod.GET)
+	public Trade getTrade(@PathVariable("tradeId") Integer tradeId) {
 
-    }
+		Trade trade = tradeService.getTrade(tradeId);
 
-    @RequestMapping(value="/{tradeId}",method = RequestMethod.POST)
-    public void saveTrade(@RequestBody Trade trade) {
-       tradeService.saveTrade( trade );
-    }
- 
-    @RequestMapping(value="/{tradeId}",method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTrade( @RequestBody Trade trade) {
-        tradeService.deleteTrade( trade );
-    }
-    
-    
+		return trade;
+	}
+
+	@RequestMapping(value = "/{tradeId}", method = RequestMethod.PUT)
+	public void updateTrade(@PathVariable("tradeId") Integer tradeId, @RequestBody Trade trade) {
+		tradeService.updateTrade(trade);
+
+	}
+
+	@RequestMapping(value = "/{tradeId}", method = RequestMethod.POST)
+	public void saveTrade(@RequestBody Trade trade) {
+		tradeService.saveTrade(trade);
+		Order order = this.orderFegnClient.getOrderByOrderId(trade.getOrder_id());
+		order.setTrade_status(1);
+		order.setTrade_id(trade.getId());
+		this.orderFegnClient.updateOrderByOrderId(trade.getOrder_id(),order);
+	}
+
+	@RequestMapping(value = "/{tradeId}", method = RequestMethod.DELETE)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteTrade(@RequestBody Trade trade) {
+		tradeService.deleteTrade(trade);
+	}
+
 }

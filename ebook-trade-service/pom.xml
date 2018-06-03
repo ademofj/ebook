@@ -95,6 +95,13 @@
 			<artifactId>hystrix-javanica</artifactId>
 			<version>1.5.9</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.ademo</groupId>
+			<artifactId>ebook-order-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 	<properties>

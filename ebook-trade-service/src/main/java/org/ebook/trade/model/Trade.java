@@ -151,6 +151,14 @@ public class Trade implements Serializable {
 	public void setUpdate_time(Date update_time) {
 		this.update_time = update_time;
 	}
+
+	@Override
+	public String toString() {
+		return "Trade [id=" + id + ", order_id=" + order_id + ", user_id=" + user_id + ", price=" + price
+				+ ", pay_status=" + pay_status + ", pay_type=" + pay_type + ", gateway_pay_num=" + gateway_pay_num
+				+ ", gateway_pay_time=" + gateway_pay_time + ", gateway_pay_price=" + gateway_pay_price + ", deleted="
+				+ deleted + ", create_time=" + create_time + ", update_time=" + update_time + "]";
+	}
 	
 
 }

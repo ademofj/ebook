@@ -21,6 +21,7 @@ public class TradeService {
     public void saveTrade(Trade trade){
 
     	tradeRepository.save(trade);
+    	
      }
 
     public void updateTrade(Trade trade){

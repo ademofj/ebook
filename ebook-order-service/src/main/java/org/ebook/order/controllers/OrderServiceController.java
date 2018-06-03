@@ -31,7 +31,7 @@ public class OrderServiceController {
     }
 
     @RequestMapping(value="/{orderId}",method = RequestMethod.PUT)
-    public void updateOrder( @PathVariable("orderId") Integer orderId, @RequestBody Order order) {
+    public void updateOrder( @RequestBody Order order) {
         orderService.updateOrder( order );
 
     }

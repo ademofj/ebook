@@ -116,6 +116,13 @@ public class Order implements Serializable {
 		this.update_time = update_time;
 	}
 
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", product_id=" + product_id + ", price=" + price + ", user_id=" + user_id
+				+ ", trade_id=" + trade_id + ", trade_status=" + trade_status + ", deleted=" + deleted
+				+ ", create_time=" + create_time + ", update_time=" + update_time + "]";
+	}
+
 
 	
 
